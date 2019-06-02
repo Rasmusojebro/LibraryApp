@@ -17,28 +17,33 @@ namespace Library
         public static List<Books> books = new List<Books>();
         public static int nextId = 0;
 
-
         public static void ListAllBooks()
         {
+            Console.WriteLine();
             foreach (Books b in books)
             {
-                Author a = Author.GetAuthorFromId(b.authorId);
-                if (a != null)
-                {
-                    Console.WriteLine(b.id + ": " + a.firstName + " " + a.lastName + " - " + b.title + ", " + b.pages + ". Type: " + b.type);
-                }
-                else
-                {
-                    Console.WriteLine(b.id + ": " + "DELETED" + " " + "AUTHOR" + " - " + b.title + ", " + b.pages + ". Type: " + b.type);
-                }
-
+                WriteBook(b);
             }
         }
+
+        public static void WriteBook(Books b)
+        {
+            Author a = Author.GetAuthorFromId(b.authorId);
+            if (a != null)
+            {
+                Console.WriteLine("ID: {0}, Author Name: {1} {2}, Book Title: {3}, Pages: {4}, Type: {5}", b.id, a.firstName, a.lastName, b.title, b.pages, b.type);
+            }
+            else
+            {
+                Console.WriteLine("ID: {0}, Author Name: {1} {2}, Book Title: {3}, Pages: {4}, Type: {5}", b.id, "DELETED", "AUTHOR", b.title, b.pages, b.type);
+            }
+        }
+
         public static void AddNewBook()
         {
-            Author a = GetAuthorForNewBook();
-            string title = GetTitleForNewBook();
-            int pages = GetAmountPagesForNewBook();
+            Author a = AddAuthorForNewBook();
+            string title = AddTitleForNewBook();
+            int pages = AddAmountOfPagesForNewBook();
             if (pages < 150)
             {
                 SmallBook b = new SmallBook(a, title, pages);
@@ -51,35 +56,25 @@ namespace Library
             {
                 LargeBook b = new LargeBook(a, title, pages);
             }
-            Console.WriteLine("{0} has been added to your library", title);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\"{0}\" has been added to your library", title);
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
 
-        private static Author GetAuthorForNewBook()
+        private static Author AddAuthorForNewBook()
         {
-            Author.ListAllAuthors();
-            Console.WriteLine();
-            Console.WriteLine("Enter AuthorID for the new book:");
-            string userInput = Console.ReadLine();
-            int userInputNumeric;
-            bool userInputIsNumeric = int.TryParse(userInput, out userInputNumeric);
-            if (userInputIsNumeric)
-            {
-                return Author.GetAuthorFromId(userInputNumeric);
-            }
-            else
-            {
-                Console.WriteLine("{0} is not a valid id, try again", userInput);
-                GetAuthorForNewBook();
-            }
-            return null;
+            int authorId = Author.ChooseAnAuthor();
+            return Author.GetAuthorFromId(authorId);
         }
-        private static string GetTitleForNewBook()
+
+        private static string AddTitleForNewBook()
         {
             Console.WriteLine();
             Console.WriteLine("What title does the new book have?");
             return Console.ReadLine();
         }
-        private static int GetAmountPagesForNewBook()
+
+        private static int AddAmountOfPagesForNewBook()
         {
             Console.WriteLine();
             Console.WriteLine("How many pages does the new book have?");
@@ -92,32 +87,51 @@ namespace Library
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine("{0} is not a valid number, try again", userInput);
-                GetAmountPagesForNewBook();
+                Console.ForegroundColor = ConsoleColor.Gray;
+                AddAmountOfPagesForNewBook();
             }
             return 0;
         }
+
         public static void DeleteBook()
         {
             ListAllBooks();
-            Console.WriteLine("Enter the ID of the book you want to delete:");
+            int bookId = GetBookId();
+            DeleteBookFromId(bookId);
+        }
+
+        private static int GetBookId()
+        {
+            ListAllBooks();
+            Console.WriteLine("Enter the ID of the book you want for this action:");
             string userInput = Console.ReadLine();
             int userInputNumeric;
             bool userInputIsNumeric = int.TryParse(userInput, out userInputNumeric);
             if (userInputIsNumeric)
             {
-                DeleteBookFromId(userInputNumeric);
+                return userInputNumeric;
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine("{0} is not a valid input, try again", userInput);
-                DeleteBook();
+                Console.ForegroundColor = ConsoleColor.Gray;
+                GetBookId();
             }
+            return 0;
+
         }
+
         public static void DeleteBookFromId(int id)
         {
             Books b = GetBookFromId(id);
+            string bookTitle = b.title;
             books.Remove(b);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("The book \"{0}\" has been removed from your library", bookTitle);
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
 
         public static Books GetBookFromId(int id)
@@ -135,6 +149,23 @@ namespace Library
         public static void DeleteAllBooks()
         {
             books.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("All books from your library has been removed");
+            Console.ForegroundColor = ConsoleColor.Gray;
+        }
+
+        public static void ChangeAuthorOnBook()
+        {
+            int authorId = Author.ChooseAnAuthor();
+            int bookId = GetBookId();
+            Books b = GetBookFromId(bookId);
+            Author oldAuthor = Author.GetAuthorFromId(b.authorId);
+            Author newAuthor = Author.GetAuthorFromId(authorId);
+            int listIndex = books.IndexOf(b);
+            books[listIndex].authorId = authorId;
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("The Author on the book \"{0}\" has been changed from \"{1}\" to \"{2}\"", b.title, oldAuthor.firstName + " " + oldAuthor.lastName, newAuthor.firstName + " " + newAuthor.lastName);
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
 
     }

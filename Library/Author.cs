@@ -25,11 +25,13 @@ namespace Library
 
         public static void ListAllAuthors()
         {
+            Console.WriteLine();
             foreach (Author a in authors)
             {
-                Console.WriteLine(a.id + ": " + a.firstName + " " + a.lastName);
+                Console.WriteLine("ID: {0}, Name: {1} {2}", a.id, a.firstName, a.lastName);
             }
         }
+
         public static Author GetAuthorFromId(int id)
         {
             try
@@ -41,52 +43,79 @@ namespace Library
                 return null;
             }
         }
+
         public static void AddNewAuthor()
         {
-            string firstName = GetFirstNameForNewAuthor();
-            string lastName = GetLastNameForNewAuthor();
+            string firstName = AddFirstNameForNewAuthor();
+            string lastName = AddLastNameForNewAuthor();
             Author a = new Author(firstName, lastName);
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("{0} {1} has been added as new Author", firstName, lastName);
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
-        private static string GetFirstNameForNewAuthor()
+
+        private static string AddFirstNameForNewAuthor()
         {
             Console.WriteLine();
             Console.WriteLine("Enter the Authors first name:");
             return Console.ReadLine();
         }
-        private static string GetLastNameForNewAuthor()
+
+        private static string AddLastNameForNewAuthor()
         {
             Console.WriteLine();
             Console.WriteLine("Enter the Authors last name:");
             return Console.ReadLine();
         }
+
         public static void DeleteAuthor()
         {
-            ListAllAuthors();
-            Console.WriteLine();
-            Console.WriteLine("Enter the ID of the author you want to delete:");
-            string userInput = Console.ReadLine();
-            int userInputNumeric;
-            bool userInputIsNumeric = int.TryParse(userInput, out userInputNumeric);
-            if (userInputIsNumeric)
-            {
-                DeleteAuthorFromId(userInputNumeric);
-            }
-            else
-            {
-                Console.WriteLine("{0} is not a valid input, try again", userInput);
-                DeleteAuthor();
-            }
-        }
-        public static void DeleteAuthorFromId(int id)
-        {
-            Author a = GetAuthorFromId(id);
+            int authorId = ChooseAnAuthor();
+            Author a = GetAuthorFromId(authorId);
+            string authorName = a.firstName + " " + a.lastName;
             authors.Remove(a);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("The author \"{0}\" has been removed", authorName);
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
 
         public static void DeleteAllAuthors()
         {
             authors.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("All authors has been removed");
+            Console.ForegroundColor = ConsoleColor.Gray;
+        }
+
+        public static int ChooseAnAuthor()
+        {
+            ListAllAuthors();
+            Console.WriteLine("Enter the ID of the author you want to chose for this action:");
+            string userInput = Console.ReadLine();
+            int userInputNumeric;
+            bool userInputIsNumeric = int.TryParse(userInput, out userInputNumeric);
+            if (userInputIsNumeric)
+            {
+                return userInputNumeric;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine("{0} is not a valid input, try again", userInput);
+                Console.ForegroundColor = ConsoleColor.Gray;
+                ChooseAnAuthor();
+            }
+            return 0;
+        }
+
+        public static void ListAllBooksFromSpecificAuthor()
+        {
+            int authorId = ChooseAnAuthor();
+            List<Books> booksOfSpecificAuthor = Books.books.Where(x => x.authorId == authorId).ToList();
+            foreach (Books b in booksOfSpecificAuthor)
+            {
+                Books.WriteBook(b);
+            }
         }
     }
 }

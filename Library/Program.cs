@@ -12,8 +12,6 @@ namespace Library
         {
             AddDefaultObjects();
             Menu();
-            Console.ReadLine();
-           
         }
         private static void Menu()
         {
@@ -28,6 +26,8 @@ namespace Library
             Console.WriteLine("6 - Delete Book");
             Console.WriteLine("7 - Delete all Authors");
             Console.WriteLine("8 - Delete all Books");
+            Console.WriteLine("9 - Get All Books From Specific Author");
+            Console.WriteLine("10 - Change Author on Book");
             Console.WriteLine("0 - Close Program");
             string userInput = Console.ReadLine();
             int userInputNumeric;
@@ -38,7 +38,9 @@ namespace Library
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine("{0} is not a valid input, try again", userInput);
+                Console.ForegroundColor = ConsoleColor.Gray;
                 Menu();
             }
 
@@ -80,7 +82,16 @@ namespace Library
                     Books.DeleteAllBooks();
                     Menu();
                     break;
+                case 9:
+                    Author.ListAllBooksFromSpecificAuthor();
+                    Menu();
+                    break;
+                case 10:
+                    Books.ChangeAuthorOnBook();
+                    Menu();
+                    break;
                 case 0:
+                    Environment.Exit(0);
                     break;
                 default:
                     break;
