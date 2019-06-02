@@ -1,0 +1,7 @@
+C:\Users\Rasmus\source\repos\Library\Library\bin\Debug\Library.exe.config
+C:\Users\Rasmus\source\repos\Library\Library\bin\Debug\Library.exe
+C:\Users\Rasmus\source\repos\Library\Library\bin\Debug\Library.pdb
+C:\Users\Rasmus\source\repos\Library\Library\obj\Debug\Library.csprojAssemblyReference.cache
+C:\Users\Rasmus\source\repos\Library\Library\obj\Debug\Library.csproj.CoreCompileInputs.cache
+C:\Users\Rasmus\source\repos\Library\Library\obj\Debug\Library.exe
+C:\Users\Rasmus\source\repos\Library\Library\obj\Debug\Library.pdb
