@@ -72,5 +72,13 @@ namespace Library.Test
             Books b = Books.GetBookFromId(2);
             Assert.AreEqual(b2, b, "The Books are equal");
         }
+
+        [TestMethod]
+        public void ChangeAuthorOnBook()
+        {
+            Books b = Books.GetBookFromId(0);
+            Books.ChangeAuthorOnBook(0, 4);
+            Assert.AreEqual(4, b.authorId, "The Author Has Been Changed On This Book");
+        }
     }
 }

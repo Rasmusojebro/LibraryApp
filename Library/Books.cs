@@ -52,7 +52,7 @@ namespace Library
             {
                 SmallBook b = new SmallBook(a, t, p);
             }
-            else if(p > 250 && p < 750)
+            else if (p > 250 && p < 750)
             {
                 MediumBook b = new MediumBook(a, t, p);
             }
@@ -157,10 +157,14 @@ namespace Library
 
         }
 
-        public static void ChangeAuthorOnBook()
+        public static void GetIdsToChangeAuthorOnBook()
         {
             int authorId = Author.GetAuthorId();
             int bookId = GetBookId();
+            ChangeAuthorOnBook(authorId, bookId);
+        }
+        public static void ChangeAuthorOnBook(int bookId, int authorId)
+        {
             Books b = GetBookFromId(bookId);
             Author oldAuthor = Author.GetAuthorFromId(b.authorId);
             Author newAuthor = Author.GetAuthorFromId(authorId);

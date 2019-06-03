@@ -87,7 +87,7 @@ namespace Library
                     Menu();
                     break;
                 case 10:
-                    Books.ChangeAuthorOnBook();
+                    Books.GetIdsToChangeAuthorOnBook();
                     Menu();
                     break;
                 case 0:
