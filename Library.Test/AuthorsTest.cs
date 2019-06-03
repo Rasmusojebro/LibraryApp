@@ -8,7 +8,6 @@ namespace Library.Test
     [TestClass]
     public class AuthorsTest
     {
- 
 
         [TestMethod]
         public void GetAuthorFromIdTest()
