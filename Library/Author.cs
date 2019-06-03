@@ -113,10 +113,15 @@ namespace Library
             }
         }
 
+        public static List<Books> GetAllBooksFromSpecificAuthor(int authorId)
+        {
+            return Books.books.Where(x => x.authorId == authorId).ToList();
+        }
         public static void ListAllBooksFromSpecificAuthor()
         {
             int authorId = GetAuthorId();
-            List<Books> booksOfSpecificAuthor = Books.books.Where(x => x.authorId == authorId).ToList();
+            List<Books> booksOfSpecificAuthor = GetAllBooksFromSpecificAuthor(authorId);
+            
             foreach (Books b in booksOfSpecificAuthor)
             {
                 Books.WriteBook(b);

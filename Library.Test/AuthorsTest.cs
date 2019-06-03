@@ -8,7 +8,13 @@ namespace Library.Test
     [TestClass]
     public class AuthorsTest
     {
-
+        [TestMethod]
+        public void CreateAuthor()
+        {
+            Author newAuthor = new Author("Rasmus", "Öjebro");
+            Author author = Author.authors.Last();
+            Assert.AreEqual(newAuthor, author, "Author skapad korrekt");
+        }
         [TestMethod]
         public void GetAuthorFromIdTest()
         {
@@ -42,6 +48,23 @@ namespace Library.Test
             Author.DeleteAuthorWithAuthor(SetupAssemblyInitializer.a2);
             int i = Author.authors.IndexOf(SetupAssemblyInitializer.a2);
             Assert.AreEqual(-1, i, "The Author has been deleted");
+        }
+
+        [TestMethod]
+        public void GetAllBooksFromSpecificAuthor()
+        {
+            int authorTestId = 2;
+            List<Books> books = Author.GetAllBooksFromSpecificAuthor(authorTestId);
+
+            bool allHasSameId = true;
+            foreach (Books book in books)
+            {
+                if (book.authorId != authorTestId)
+                {
+                    allHasSameId = false;
+                }
+            }
+            Assert.IsTrue(allHasSameId, "All books has same authorId");
         }
     }
 }
