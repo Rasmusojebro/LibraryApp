@@ -52,6 +52,7 @@
     <Compile Include="AuthorsTest.cs" />
     <Compile Include="BooksTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SetupAssemblyInitializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -10,13 +10,6 @@ namespace Library.Test
     [TestClass]
     public class BooksTest
     {
-        Books b = new MediumBook(AuthorsTest.a, "Natural Language Processing in Action", 300);
-        Books b1 = new MediumBook(AuthorsTest.a1, "Grokking Deep Learning", 359);
-        Books b2 = new MediumBook(AuthorsTest.a2, "Rootkits And Bootkits", 504);
-        Books b3 = new LargeBook(AuthorsTest.a3, "C# 7.0 in a Nutshell", 1056);
-        Books b4 = new SmallBook(AuthorsTest.a3, "LINQ Pocket Reference", 172);
-        Books b5 = new MediumBook(AuthorsTest.a4, "Clean Code: A Handbook of Agile Software Craftmanship", 464);
-
         [TestMethod]
         public void CreateSmallBook()
         {
@@ -48,12 +41,29 @@ namespace Library.Test
             Assert.AreEqual("large", b.type, "New large book has type: {0}", b.type);
         }
 
+
+        [TestMethod]
+        public void GetBookFromId()
+        {
+            Books b = Books.GetBookFromId(2);
+            Assert.AreEqual(2, b.id, "The Books are equal");
+        }
+
+        [TestMethod]
+        public void ChangeAuthorOnBook()
+        {
+            Books b = Books.GetBookFromId(1);
+            int currentId = b.authorId;
+            Books.ChangeAuthorOnBook(1, 4);
+            Assert.AreEqual(4, b.authorId, "The Author Has Been Changed On This Book: " + currentId);
+        }
+
         [TestMethod]
         public void DeleteBookWithId()
         {
-            int id = b2.id;
+            int id = SetupAssemblyInitializer.b2.id;
             Books.DeleteBookFromId(id);
-            int i = Books.books.IndexOf(b2);
+            int i = Books.books.IndexOf(SetupAssemblyInitializer.b2);
             Assert.AreEqual(-1, i, "The book has been deleted");
         }
 
@@ -64,21 +74,6 @@ namespace Library.Test
             Books.DeleteAllBooks();
             int endCount = Books.books.Count();
             Assert.AreEqual(0, Books.books.Count, startCount + " books has been deleted from your library!");
-        }
-
-        [TestMethod]
-        public void GetBookFromId()
-        {
-            Books b = Books.GetBookFromId(2);
-            Assert.AreEqual(b2, b, "The Books are equal");
-        }
-
-        [TestMethod]
-        public void ChangeAuthorOnBook()
-        {
-            Books b = Books.GetBookFromId(0);
-            Books.ChangeAuthorOnBook(0, 4);
-            Assert.AreEqual(4, b.authorId, "The Author Has Been Changed On This Book");
         }
     }
 }

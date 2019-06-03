@@ -70,14 +70,12 @@ namespace Library
             int authorId = Author.GetAuthorId();
             return Author.GetAuthorFromId(authorId);
         }
-
         private static string AddTitleForNewBook()
         {
             Console.WriteLine();
             Console.WriteLine("What title does the new book have?");
             return Console.ReadLine();
         }
-
         private static int AddAmountOfPagesForNewBook()
         {
             Console.WriteLine();
@@ -104,7 +102,6 @@ namespace Library
             int bookId = GetBookId();
             DeleteBookFromId(bookId);
         }
-
         public static void DeleteBookFromId(int id)
         {
             Books b = GetBookFromId(id);
@@ -114,25 +111,12 @@ namespace Library
             Console.WriteLine("The book \"{0}\" has been removed from your library", bookTitle);
             Console.ForegroundColor = ConsoleColor.Gray;
         }
-
         public static void DeleteAllBooks()
         {
             books.Clear();
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("All books from your library has been removed");
             Console.ForegroundColor = ConsoleColor.Gray;
-        }
-
-        public static Books GetBookFromId(int id)
-        {
-            try
-            {
-                return books.Where(x => x.id == id).First();
-            }
-            catch (Exception)
-            {
-                return null;
-            }
         }
 
         private static int GetBookId()
@@ -156,6 +140,17 @@ namespace Library
             return 0;
 
         }
+        public static Books GetBookFromId(int id)
+        {
+            try
+            {
+                return books.Where(x => x.id == id).First();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
 
         public static void GetIdsToChangeAuthorOnBook()
         {
@@ -166,13 +161,14 @@ namespace Library
         public static void ChangeAuthorOnBook(int bookId, int authorId)
         {
             Books b = GetBookFromId(bookId);
-            Author oldAuthor = Author.GetAuthorFromId(b.authorId);
-            Author newAuthor = Author.GetAuthorFromId(authorId);
             int listIndex = books.IndexOf(b);
             books[listIndex].authorId = authorId;
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("The Author on the book \"{0}\" has been changed from \"{1}\" to \"{2}\"", b.title, oldAuthor.firstName + " " + oldAuthor.lastName, newAuthor.firstName + " " + newAuthor.lastName);
+            //Console.WriteLine("The Author on the book \"{0}\" has been changed from \"{1}\" to \"{2}\"", b.title, oldAuthor.firstName + " " + oldAuthor.lastName, newAuthor.firstName + " " + newAuthor.lastName);
+            Console.WriteLine("The book {0} has changed author", b.title);
             Console.ForegroundColor = ConsoleColor.Gray;
+
+
         }
 
     }

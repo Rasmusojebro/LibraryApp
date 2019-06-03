@@ -60,6 +60,11 @@ namespace Library
         {
             int authorId = GetAuthorId();
             Author a = GetAuthorFromId(authorId);
+            DeleteAuthorWithAuthor(a);
+        }
+
+        public static void DeleteAuthorWithAuthor(Author a)
+        {
             string authorName = a.firstName + " " + a.lastName;
             authors.Remove(a);
             Console.ForegroundColor = ConsoleColor.Red;

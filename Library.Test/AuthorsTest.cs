@@ -8,12 +8,7 @@ namespace Library.Test
     [TestClass]
     public class AuthorsTest
     {
-        public static Author a = new Author("Lane", "Hobson");
-        public static Author a1 = new Author("Andrew W", "Trask");
-        public static Author a2 = new Author("Alex", "Matroosov");
-        public static Author a3 = new Author("Joseph", "Albahari");
-        public static Author a4 = new Author("Robert C", "Martin");
-        List<Author> authorsTest = Author.authors;
+ 
 
         [TestMethod]
         public void GetAuthorFromIdTest()
@@ -21,9 +16,33 @@ namespace Library.Test
             //Arrange
             int ID = 2;
             //Act
-            var y = authorsTest.Where(x => x.id == ID).First();
+            var y = SetupAssemblyInitializer.authors.Where(x => x.id == ID).First();
             //Assert
-            Assert.AreEqual(a2, y, "The Authors are Equal");
+            Assert.AreEqual(SetupAssemblyInitializer.a2, y, "The Authors are Equal");
+        }
+
+        [TestMethod]
+        public void GetAuthorFromId()
+        {
+            Author a = Author.GetAuthorFromId(2);
+            Assert.AreEqual(SetupAssemblyInitializer.a2, a, "The authors are equal");
+        }
+
+        [TestMethod]
+        public void DeleteAllAuthors()
+        {
+            int startCount = Author.authors.Count();
+            Author.DeleteAllAuthors();
+            int endCount = Author.authors.Count();
+            Assert.AreEqual(0, Author.authors.Count, startCount + " authors has been deleted from your library!");
+        }
+
+        [TestMethod]
+        public void DeleteAuthorWithAuthor()
+        {
+            Author.DeleteAuthorWithAuthor(SetupAssemblyInitializer.a2);
+            int i = Author.authors.IndexOf(SetupAssemblyInitializer.a2);
+            Assert.AreEqual(-1, i, "The Author has been deleted");
         }
     }
 }
