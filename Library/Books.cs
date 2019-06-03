@@ -13,7 +13,7 @@ namespace Library
         //public Author author { get; set; }
         public int authorId { get; set; }
         public string title { get; set; }
-        public int pages { get; set; }
+        public int p { get; set; }
         public static List<Books> books = new List<Books>();
         public static int nextId = 0;
 
@@ -31,33 +31,37 @@ namespace Library
             Author a = Author.GetAuthorFromId(b.authorId);
             if (a != null)
             {
-                Console.WriteLine("ID: {0}, Author Name: {1} {2}, Book Title: {3}, Pages: {4}, Type: {5}", b.id, a.firstName, a.lastName, b.title, b.pages, b.type);
+                Console.WriteLine("ID: {0}, Author Name: {1} {2}, Book Title: {3}, Pages: {4}, Type: {5}", b.id, a.firstName, a.lastName, b.title, b.p, b.type);
             }
             else
             {
-                Console.WriteLine("ID: {0}, Author Name: {1} {2}, Book Title: {3}, Pages: {4}, Type: {5}", b.id, "DELETED", "AUTHOR", b.title, b.pages, b.type);
+                Console.WriteLine("ID: {0}, Author Name: {1} {2}, Book Title: {3}, Pages: {4}, Type: {5}", b.id, "DELETED", "AUTHOR", b.title, b.p, b.type);
             }
         }
 
-        public static void AddNewBook()
+        public static void CreateDataForNewBook()
         {
             Author a = AddAuthorForNewBook();
             string title = AddTitleForNewBook();
             int pages = AddAmountOfPagesForNewBook();
-            if (pages < 250)
+            AddNewBook(a, title, pages);
+        }
+        public static void AddNewBook(Author a, string t, int p)
+        {
+            if (p < 250)
             {
-                SmallBook b = new SmallBook(a, title, pages);
+                SmallBook b = new SmallBook(a, t, p);
             }
-            else if(pages > 250 && pages < 750)
+            else if(p > 250 && p < 750)
             {
-                MediumBook b = new MediumBook(a, title, pages);
+                MediumBook b = new MediumBook(a, t, p);
             }
             else
             {
-                LargeBook b = new LargeBook(a, title, pages);
+                LargeBook b = new LargeBook(a, t, p);
             }
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("\"{0}\" has been added to your library", title);
+            Console.WriteLine("\"{0}\" has been added to your library", t);
             Console.ForegroundColor = ConsoleColor.Gray;
         }
 

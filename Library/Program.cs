@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Library
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -63,7 +63,7 @@ namespace Library
                     Menu();
                     break;
                 case 4:
-                    Books.AddNewBook();
+                    Books.CreateDataForNewBook();
                     Menu();
                     break;
                 case 5:

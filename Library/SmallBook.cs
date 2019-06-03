@@ -14,7 +14,7 @@ namespace Library
             type = "small";
             authorId = auth.id;
             title = t;
-            pages = p;
+            base.p = p;
             books.Add(this);
             nextId++;
         }

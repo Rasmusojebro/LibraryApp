@@ -1,0 +1,17 @@
+C:\Users\Dell123\Desktop\Projects\LibraryApp\Library.Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Dell123\Desktop\Projects\LibraryApp\Library.Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Dell123\Desktop\Projects\LibraryApp\Library.Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Dell123\Desktop\Projects\LibraryApp\Library.Test\bin\Debug\Library.Test.dll
+C:\Users\Dell123\Desktop\Projects\LibraryApp\Library.Test\bin\Debug\Library.Test.pdb
+C:\Users\Dell123\Desktop\Projects\LibraryApp\Library.Test\bin\Debug\Library.exe
+C:\Users\Dell123\Desktop\Projects\LibraryApp\Library.Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\Dell123\Desktop\Projects\LibraryApp\Library.Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\Dell123\Desktop\Projects\LibraryApp\Library.Test\bin\Debug\Library.pdb
+C:\Users\Dell123\Desktop\Projects\LibraryApp\Library.Test\bin\Debug\Library.exe.config
+C:\Users\Dell123\Desktop\Projects\LibraryApp\Library.Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\Dell123\Desktop\Projects\LibraryApp\Library.Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\Dell123\Desktop\Projects\LibraryApp\Library.Test\obj\Debug\Library.Test.csprojAssemblyReference.cache
+C:\Users\Dell123\Desktop\Projects\LibraryApp\Library.Test\obj\Debug\Library.Test.csproj.CoreCompileInputs.cache
+C:\Users\Dell123\Desktop\Projects\LibraryApp\Library.Test\obj\Debug\Library.Test.csproj.CopyComplete
+C:\Users\Dell123\Desktop\Projects\LibraryApp\Library.Test\obj\Debug\Library.Test.dll
+C:\Users\Dell123\Desktop\Projects\LibraryApp\Library.Test\obj\Debug\Library.Test.pdb
