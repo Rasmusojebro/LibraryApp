@@ -8,11 +8,11 @@ namespace Library.Test
     [TestClass]
     public class AuthorsTest
     {
-        Author a = new Author("Lane", "Hobson");
-        Author a1 = new Author("Andrew W", "Trask");
-        Author a2 = new Author("Alex", "Matroosov");
-        Author a3 = new Author("Joseph", "Albahari");
-        Author a4 = new Author("Robert C", "Martin");
+        public static Author a = new Author("Lane", "Hobson");
+        public static Author a1 = new Author("Andrew W", "Trask");
+        public static Author a2 = new Author("Alex", "Matroosov");
+        public static Author a3 = new Author("Joseph", "Albahari");
+        public static Author a4 = new Author("Robert C", "Martin");
         List<Author> authorsTest = Author.authors;
 
         [TestMethod]
