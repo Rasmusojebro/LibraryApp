@@ -99,13 +99,18 @@ namespace Library
         }
         private static void AddDefaultObjects()
         {
-            Author a = new Author("Rasmus", "Öjebro");
-            Author a1 = new Author("Lucas", "Rohlin");
-            Author a2 = new Author("Stephen", "King");
+            Author a = new Author("Lane", "Hobson");
+            Author a1 = new Author("Andrew W", "Trask");
+            Author a2 = new Author("Alex", "Matroosov");
+            Author a3 = new Author("Joseph", "Albahari");
+            Author a4 = new Author("Robert C", "Martin");
 
-            SmallBook b = new SmallBook(a, "Livet om Rasmus", 132);
-            MediumBook b1 = new MediumBook(a1, "Lucas Resa", 510);
-            LargeBook b2 = new LargeBook(a2, "IT", 923);
+            new MediumBook(a, "Natural Language Processing in Action", 300);
+            new MediumBook(a1, "Grokking Deep Learning", 359);
+            new MediumBook(a2, "Rootkits And Bootkits", 504);
+            new LargeBook(a3, "C# 7.0 in a Nutshell", 1056);
+            new SmallBook(a3, "LINQ Pocket Reference", 172);
+            new MediumBook(a4, "Clean Code: A Handbook of Agile Software Craftmanship", 464);
         }
 
     }

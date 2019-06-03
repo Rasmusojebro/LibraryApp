@@ -8,7 +8,6 @@ namespace Library
 {
     public class SmallBook : Books
     {
-         
         public SmallBook(Author auth, string t, int p)
         {
             id = nextId;

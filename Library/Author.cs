@@ -32,18 +32,6 @@ namespace Library
             }
         }
 
-        public static Author GetAuthorFromId(int id)
-        {
-            try
-            {
-                return authors.Where(x => x.id == id).First();
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
         public static void AddNewAuthor()
         {
             string firstName = AddFirstNameForNewAuthor();
@@ -70,7 +58,7 @@ namespace Library
 
         public static void DeleteAuthor()
         {
-            int authorId = ChooseAnAuthor();
+            int authorId = GetAuthorId();
             Author a = GetAuthorFromId(authorId);
             string authorName = a.firstName + " " + a.lastName;
             authors.Remove(a);
@@ -87,7 +75,7 @@ namespace Library
             Console.ForegroundColor = ConsoleColor.Gray;
         }
 
-        public static int ChooseAnAuthor()
+        public static int GetAuthorId()
         {
             ListAllAuthors();
             Console.WriteLine("Enter the ID of the author you want to chose for this action:");
@@ -103,14 +91,26 @@ namespace Library
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine("{0} is not a valid input, try again", userInput);
                 Console.ForegroundColor = ConsoleColor.Gray;
-                ChooseAnAuthor();
+                GetAuthorId();
             }
             return 0;
         }
 
+        public static Author GetAuthorFromId(int id)
+        {
+            try
+            {
+                return authors.Where(x => x.id == id).First();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
         public static void ListAllBooksFromSpecificAuthor()
         {
-            int authorId = ChooseAnAuthor();
+            int authorId = GetAuthorId();
             List<Books> booksOfSpecificAuthor = Books.books.Where(x => x.authorId == authorId).ToList();
             foreach (Books b in booksOfSpecificAuthor)
             {

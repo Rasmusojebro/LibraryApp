@@ -8,7 +8,6 @@ namespace Library
 {
     public class LargeBook : Books
     {
-
         public LargeBook(Author auth, string t, int p)
         {
             id = nextId;
@@ -19,6 +18,5 @@ namespace Library
             books.Add(this);
             nextId++;
         }
-
     }
 }

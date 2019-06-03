@@ -44,11 +44,11 @@ namespace Library
             Author a = AddAuthorForNewBook();
             string title = AddTitleForNewBook();
             int pages = AddAmountOfPagesForNewBook();
-            if (pages < 150)
+            if (pages < 250)
             {
                 SmallBook b = new SmallBook(a, title, pages);
             }
-            else if(pages > 150 && pages < 500)
+            else if(pages > 250 && pages < 750)
             {
                 MediumBook b = new MediumBook(a, title, pages);
             }
@@ -63,7 +63,7 @@ namespace Library
 
         private static Author AddAuthorForNewBook()
         {
-            int authorId = Author.ChooseAnAuthor();
+            int authorId = Author.GetAuthorId();
             return Author.GetAuthorFromId(authorId);
         }
 
@@ -97,9 +97,38 @@ namespace Library
 
         public static void DeleteBook()
         {
-            ListAllBooks();
             int bookId = GetBookId();
             DeleteBookFromId(bookId);
+        }
+
+        public static void DeleteBookFromId(int id)
+        {
+            Books b = GetBookFromId(id);
+            string bookTitle = b.title;
+            books.Remove(b);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("The book \"{0}\" has been removed from your library", bookTitle);
+            Console.ForegroundColor = ConsoleColor.Gray;
+        }
+
+        public static void DeleteAllBooks()
+        {
+            books.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("All books from your library has been removed");
+            Console.ForegroundColor = ConsoleColor.Gray;
+        }
+
+        public static Books GetBookFromId(int id)
+        {
+            try
+            {
+                return books.Where(x => x.id == id).First();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         private static int GetBookId()
@@ -124,39 +153,9 @@ namespace Library
 
         }
 
-        public static void DeleteBookFromId(int id)
-        {
-            Books b = GetBookFromId(id);
-            string bookTitle = b.title;
-            books.Remove(b);
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("The book \"{0}\" has been removed from your library", bookTitle);
-            Console.ForegroundColor = ConsoleColor.Gray;
-        }
-
-        public static Books GetBookFromId(int id)
-        {
-            try
-            {
-                return books.Where(x => x.id == id).First();
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-        public static void DeleteAllBooks()
-        {
-            books.Clear();
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("All books from your library has been removed");
-            Console.ForegroundColor = ConsoleColor.Gray;
-        }
-
         public static void ChangeAuthorOnBook()
         {
-            int authorId = Author.ChooseAnAuthor();
+            int authorId = Author.GetAuthorId();
             int bookId = GetBookId();
             Books b = GetBookFromId(bookId);
             Author oldAuthor = Author.GetAuthorFromId(b.authorId);

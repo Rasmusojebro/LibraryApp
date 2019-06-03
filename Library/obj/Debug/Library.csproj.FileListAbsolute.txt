@@ -12,3 +12,10 @@ C:\Users\Rasmus\source\repos\Library\LibraryApp\Library\obj\Debug\Library.csproj
 C:\Users\Rasmus\source\repos\Library\LibraryApp\Library\obj\Debug\Library.csproj.CoreCompileInputs.cache
 C:\Users\Rasmus\source\repos\Library\LibraryApp\Library\obj\Debug\Library.exe
 C:\Users\Rasmus\source\repos\Library\LibraryApp\Library\obj\Debug\Library.pdb
+C:\Users\Dell123\Desktop\Projects\LibraryApp\Library\bin\Debug\Library.exe.config
+C:\Users\Dell123\Desktop\Projects\LibraryApp\Library\bin\Debug\Library.exe
+C:\Users\Dell123\Desktop\Projects\LibraryApp\Library\bin\Debug\Library.pdb
+C:\Users\Dell123\Desktop\Projects\LibraryApp\Library\obj\Debug\Library.csprojAssemblyReference.cache
+C:\Users\Dell123\Desktop\Projects\LibraryApp\Library\obj\Debug\Library.csproj.CoreCompileInputs.cache
+C:\Users\Dell123\Desktop\Projects\LibraryApp\Library\obj\Debug\Library.exe
+C:\Users\Dell123\Desktop\Projects\LibraryApp\Library\obj\Debug\Library.pdb
