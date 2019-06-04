@@ -20,48 +20,48 @@ namespace Library
         public static void ListAllBooks()
         {
             Console.WriteLine();
-            foreach (Book b in Books)
+            foreach (Book book in Books)
             {
-                WriteBook(b);
+                WriteBook(book);
             }
         }
 
-        public static void WriteBook(Book b)
+        public static void WriteBook(Book book)
         {
-            Author a = Author.GetAuthorFromId(b.AuthorId);
-            if (a != null)
+            Author author = Author.GetAuthorFromId(book.AuthorId);
+            if (author != null)
             {
-                Console.WriteLine("ID: {0}, Author Name: {1} {2}, Book Title: {3}, Pages: {4}, Type: {5}", b.Id, a.FirstName, a.LastName, b.Title, b.Pages, b.Type);
+                Console.WriteLine("ID: {0}, Author Name: {1} {2}, Book Title: {3}, Pages: {4}, Type: {5}", book.Id, author.FirstName, author.LastName, book.Title, book.Pages, book.Type);
             }
             else
             {
-                Console.WriteLine("ID: {0}, Author Name: {1} {2}, Book Title: {3}, Pages: {4}, Type: {5}", b.Id, "DELETED", "AUTHOR", b.Title, b.Pages, b.Type);
+                Console.WriteLine("ID: {0}, Author Name: {1} {2}, Book Title: {3}, Pages: {4}, Type: {5}", book.Id, "DELETED", "AUTHOR", book.Title, book.Pages, book.Type);
             }
         }
 
         public static void CreateDataForNewBook()
         {
-            Author a = AddAuthorForNewBook();
+            Author author = AddAuthorForNewBook();
             string title = AddTitleForNewBook();
             int pages = AddAmountOfPagesForNewBook();
-            AddNewBook(a, title, pages);
+            AddNewBook(author, title, pages);
         }
-        public static void AddNewBook(Author a, string t, int p)
+        public static void AddNewBook(Author author, string title, int pages)
         {
-            if (p < 250)
+            if (pages < 250)
             {
-                SmallBook b = new SmallBook(a, t, p);
+                SmallBook b = new SmallBook(author, title, pages);
             }
-            else if (p > 250 && p < 750)
+            else if (pages > 250 && pages < 750)
             {
-                MediumBook b = new MediumBook(a, t, p);
+                MediumBook b = new MediumBook(author, title, pages);
             }
             else
             {
-                LargeBook b = new LargeBook(a, t, p);
+                LargeBook b = new LargeBook(author, title, pages);
             }
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("\"{0}\" has been added to your library", t);
+            Console.WriteLine("\"{0}\" has been added to your library", title);
             Console.ForegroundColor = ConsoleColor.Gray;
         }
 
@@ -104,9 +104,9 @@ namespace Library
         }
         public static void DeleteBookFromId(int id)
         {
-            Book b = GetBookFromId(id);
-            string bookTitle = b.Title;
-            Books.Remove(b);
+            Book book = GetBookFromId(id);
+            string bookTitle = book.Title;
+            Books.Remove(book);
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("The book \"{0}\" has been removed from your library", bookTitle);
             Console.ForegroundColor = ConsoleColor.Gray;
@@ -160,12 +160,12 @@ namespace Library
         }
         public static void ChangeAuthorOnBook(int bookId, int authorId)
         {
-            Book b = GetBookFromId(bookId);
-            int listIndex = Books.IndexOf(b);
+            Book book = GetBookFromId(bookId);
+            int listIndex = Books.IndexOf(book);
             Books[listIndex].AuthorId = authorId;
             Console.ForegroundColor = ConsoleColor.Green;
             //Console.WriteLine("The Author on the book \"{0}\" has been changed from \"{1}\" to \"{2}\"", b.title, oldAuthor.firstName + " " + oldAuthor.lastName, newAuthor.firstName + " " + newAuthor.lastName);
-            Console.WriteLine("The book {0} has changed author", b.Title);
+            Console.WriteLine("The book {0} has changed author", book.Title);
             Console.ForegroundColor = ConsoleColor.Gray;
 
 
