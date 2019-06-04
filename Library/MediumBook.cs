@@ -8,13 +8,13 @@ namespace Library
 {
     public class MediumBook : Book
     {
-        public MediumBook(Author auth, string t, int p)
+        public MediumBook(Author author, string title, int pages)
         {
             Id = NextId;
             Type = "medium";
-            AuthorId = auth.Id;
-            Title = t;
-            base.p = p;
+            AuthorId = author.Id;
+            Title = title;
+            base.pages = pages;
             Books.Add(this);
             NextId++;
         }

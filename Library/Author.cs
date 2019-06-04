@@ -36,7 +36,7 @@ namespace Library
         {
             string firstName = AddFirstNameForNewAuthor();
             string lastName = AddLastNameForNewAuthor();
-            Author a = new Author(firstName, lastName);
+            Author author = new Author(firstName, lastName);
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("{0} {1} has been added as new Author", firstName, lastName);
             Console.ForegroundColor = ConsoleColor.Gray;
@@ -59,14 +59,14 @@ namespace Library
         public static void DeleteAuthor()
         {
             int authorId = GetAuthorId();
-            Author a = GetAuthorFromId(authorId);
-            DeleteAuthorWithAuthor(a);
+            Author author = GetAuthorFromId(authorId);
+            DeleteAuthorWithAuthor(author);
         }
 
-        public static void DeleteAuthorWithAuthor(Author a)
+        public static void DeleteAuthorWithAuthor(Author author)
         {
-            string authorName = a.FirstName + " " + a.LastName;
-            Authors.Remove(a);
+            string authorName = author.FirstName + " " + author.LastName;
+            Authors.Remove(author);
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("The author \"{0}\" has been removed", authorName);
             Console.ForegroundColor = ConsoleColor.Gray;
@@ -122,9 +122,9 @@ namespace Library
             int authorId = GetAuthorId();
             List<Book> booksOfSpecificAuthor = GetAllBooksFromSpecificAuthor(authorId);
             
-            foreach (Book b in booksOfSpecificAuthor)
+            foreach (Book book in booksOfSpecificAuthor)
             {
-                Book.WriteBook(b);
+                Book.WriteBook(book);
             }
         }
     }
