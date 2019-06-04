@@ -13,7 +13,7 @@ namespace Library
         //public Author author { get; set; }
         public int AuthorId { get; set; }
         public string Title { get; set; }
-        public int pages { get; set; }
+        public int Pages { get; set; }
         public static List<Book> Books = new List<Book>();
         public static int NextId = 0;
 
@@ -31,11 +31,11 @@ namespace Library
             Author a = Author.GetAuthorFromId(b.AuthorId);
             if (a != null)
             {
-                Console.WriteLine("ID: {0}, Author Name: {1} {2}, Book Title: {3}, Pages: {4}, Type: {5}", b.Id, a.FirstName, a.LastName, b.Title, b.pages, b.Type);
+                Console.WriteLine("ID: {0}, Author Name: {1} {2}, Book Title: {3}, Pages: {4}, Type: {5}", b.Id, a.FirstName, a.LastName, b.Title, b.Pages, b.Type);
             }
             else
             {
-                Console.WriteLine("ID: {0}, Author Name: {1} {2}, Book Title: {3}, Pages: {4}, Type: {5}", b.Id, "DELETED", "AUTHOR", b.Title, b.pages, b.Type);
+                Console.WriteLine("ID: {0}, Author Name: {1} {2}, Book Title: {3}, Pages: {4}, Type: {5}", b.Id, "DELETED", "AUTHOR", b.Title, b.Pages, b.Type);
             }
         }
 
