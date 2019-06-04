@@ -8,13 +8,13 @@ namespace Library
 {
     public class LargeBook : Book
     {
-        public LargeBook(Author auth, string t, int p)
+        public LargeBook(Author author, string title, int pages)
         {
             Id = NextId;
             Type = "large";
-            AuthorId = auth.Id;
-            Title = t;
-            base.Pages = p;
+            AuthorId = author.Id;
+            Title = title;
+            Pages = pages;
             Books.Add(this);
             NextId++;
         }

@@ -14,7 +14,7 @@ namespace Library
             Type = "medium";
             AuthorId = author.Id;
             Title = title;
-            base.Pages = pages;
+            Pages = pages;
             Books.Add(this);
             NextId++;
         }
