@@ -6,36 +6,36 @@ using System.Threading.Tasks;
 
 namespace Library
 {
-    public class Books
+    public class Book
     {
-        public int id { get; set; }
-        public string type { get; set; }
+        public int Id { get; set; }
+        public string Type { get; set; }
         //public Author author { get; set; }
-        public int authorId { get; set; }
-        public string title { get; set; }
+        public int AuthorId { get; set; }
+        public string Title { get; set; }
         public int p { get; set; }
-        public static List<Books> books = new List<Books>();
-        public static int nextId = 0;
+        public static List<Book> Books = new List<Book>();
+        public static int NextId = 0;
 
         public static void ListAllBooks()
         {
             Console.WriteLine();
-            foreach (Books b in books)
+            foreach (Book b in Books)
             {
                 WriteBook(b);
             }
         }
 
-        public static void WriteBook(Books b)
+        public static void WriteBook(Book b)
         {
-            Author a = Author.GetAuthorFromId(b.authorId);
+            Author a = Author.GetAuthorFromId(b.AuthorId);
             if (a != null)
             {
-                Console.WriteLine("ID: {0}, Author Name: {1} {2}, Book Title: {3}, Pages: {4}, Type: {5}", b.id, a.firstName, a.lastName, b.title, b.p, b.type);
+                Console.WriteLine("ID: {0}, Author Name: {1} {2}, Book Title: {3}, Pages: {4}, Type: {5}", b.Id, a.FirstName, a.LastName, b.Title, b.p, b.Type);
             }
             else
             {
-                Console.WriteLine("ID: {0}, Author Name: {1} {2}, Book Title: {3}, Pages: {4}, Type: {5}", b.id, "DELETED", "AUTHOR", b.title, b.p, b.type);
+                Console.WriteLine("ID: {0}, Author Name: {1} {2}, Book Title: {3}, Pages: {4}, Type: {5}", b.Id, "DELETED", "AUTHOR", b.Title, b.p, b.Type);
             }
         }
 
@@ -104,16 +104,16 @@ namespace Library
         }
         public static void DeleteBookFromId(int id)
         {
-            Books b = GetBookFromId(id);
-            string bookTitle = b.title;
-            books.Remove(b);
+            Book b = GetBookFromId(id);
+            string bookTitle = b.Title;
+            Books.Remove(b);
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("The book \"{0}\" has been removed from your library", bookTitle);
             Console.ForegroundColor = ConsoleColor.Gray;
         }
         public static void DeleteAllBooks()
         {
-            books.Clear();
+            Books.Clear();
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("All books from your library has been removed");
             Console.ForegroundColor = ConsoleColor.Gray;
@@ -140,11 +140,11 @@ namespace Library
             return 0;
 
         }
-        public static Books GetBookFromId(int id)
+        public static Book GetBookFromId(int id)
         {
             try
             {
-                return books.Where(x => x.id == id).First();
+                return Books.Where(x => x.Id == id).First();
             }
             catch (Exception)
             {
@@ -160,12 +160,12 @@ namespace Library
         }
         public static void ChangeAuthorOnBook(int bookId, int authorId)
         {
-            Books b = GetBookFromId(bookId);
-            int listIndex = books.IndexOf(b);
-            books[listIndex].authorId = authorId;
+            Book b = GetBookFromId(bookId);
+            int listIndex = Books.IndexOf(b);
+            Books[listIndex].AuthorId = authorId;
             Console.ForegroundColor = ConsoleColor.Green;
             //Console.WriteLine("The Author on the book \"{0}\" has been changed from \"{1}\" to \"{2}\"", b.title, oldAuthor.firstName + " " + oldAuthor.lastName, newAuthor.firstName + " " + newAuthor.lastName);
-            Console.WriteLine("The book {0} has changed author", b.title);
+            Console.WriteLine("The book {0} has changed author", b.Title);
             Console.ForegroundColor = ConsoleColor.Gray;
 
 

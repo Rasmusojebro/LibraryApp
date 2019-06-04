@@ -59,11 +59,11 @@ namespace Library
                     Menu();
                     break;
                 case 3:
-                    Books.ListAllBooks();
+                    Book.ListAllBooks();
                     Menu();
                     break;
                 case 4:
-                    Books.CreateDataForNewBook();
+                    Book.CreateDataForNewBook();
                     Menu();
                     break;
                 case 5:
@@ -71,7 +71,7 @@ namespace Library
                     Menu();
                     break;
                 case 6:
-                    Books.DeleteBook();
+                    Book.DeleteBook();
                     Menu();
                     break;
                 case 7:
@@ -79,7 +79,7 @@ namespace Library
                     Menu();
                     break;
                 case 8:
-                    Books.DeleteAllBooks();
+                    Book.DeleteAllBooks();
                     Menu();
                     break;
                 case 9:
@@ -87,7 +87,7 @@ namespace Library
                     Menu();
                     break;
                 case 10:
-                    Books.GetIdsToChangeAuthorOnBook();
+                    Book.GetIdsToChangeAuthorOnBook();
                     Menu();
                     break;
                 case 0:

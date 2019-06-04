@@ -8,27 +8,27 @@ namespace Library
 {
     public class Author
     {
-        public int id;
-        public static int nextId = 0;
-        public string firstName;
-        public string lastName;
-        public static List<Author> authors = new List<Author>();
+        public int Id;
+        public static int NextId = 0;
+        public string FirstName;
+        public string LastName;
+        public static List<Author> Authors = new List<Author>();
 
         public Author(string first, string last)
         {
-            id = nextId;
-            firstName = first;
-            lastName = last;
-            authors.Add(this);
-            nextId++;
+            Id = NextId;
+            FirstName = first;
+            LastName = last;
+            Authors.Add(this);
+            NextId++;
         }
 
         public static void ListAllAuthors()
         {
             Console.WriteLine();
-            foreach (Author a in authors)
+            foreach (Author a in Authors)
             {
-                Console.WriteLine("ID: {0}, Name: {1} {2}", a.id, a.firstName, a.lastName);
+                Console.WriteLine("ID: {0}, Name: {1} {2}", a.Id, a.FirstName, a.LastName);
             }
         }
 
@@ -65,8 +65,8 @@ namespace Library
 
         public static void DeleteAuthorWithAuthor(Author a)
         {
-            string authorName = a.firstName + " " + a.lastName;
-            authors.Remove(a);
+            string authorName = a.FirstName + " " + a.LastName;
+            Authors.Remove(a);
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("The author \"{0}\" has been removed", authorName);
             Console.ForegroundColor = ConsoleColor.Gray;
@@ -74,7 +74,7 @@ namespace Library
 
         public static void DeleteAllAuthors()
         {
-            authors.Clear();
+            Authors.Clear();
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("All authors has been removed");
             Console.ForegroundColor = ConsoleColor.Gray;
@@ -105,7 +105,7 @@ namespace Library
         {
             try
             {
-                return authors.Where(x => x.id == id).First();
+                return Authors.Where(x => x.Id == id).First();
             }
             catch (Exception)
             {
@@ -113,18 +113,18 @@ namespace Library
             }
         }
 
-        public static List<Books> GetAllBooksFromSpecificAuthor(int authorId)
+        public static List<Book> GetAllBooksFromSpecificAuthor(int authorId)
         {
-            return Books.books.Where(x => x.authorId == authorId).ToList();
+            return Book.Books.Where(x => x.AuthorId == authorId).ToList();
         }
         public static void ListAllBooksFromSpecificAuthor()
         {
             int authorId = GetAuthorId();
-            List<Books> booksOfSpecificAuthor = GetAllBooksFromSpecificAuthor(authorId);
+            List<Book> booksOfSpecificAuthor = GetAllBooksFromSpecificAuthor(authorId);
             
-            foreach (Books b in booksOfSpecificAuthor)
+            foreach (Book b in booksOfSpecificAuthor)
             {
-                Books.WriteBook(b);
+                Book.WriteBook(b);
             }
         }
     }

@@ -12,7 +12,7 @@ namespace Library.Test
         public void CreateAuthor()
         {
             Author newAuthor = new Author("Rasmus", "Öjebro");
-            Author author = Author.authors.Last();
+            Author author = Author.Authors.Last();
             Assert.AreEqual(newAuthor, author, "Author skapad korrekt");
         }
         [TestMethod]
@@ -21,7 +21,7 @@ namespace Library.Test
             //Arrange
             int ID = 2;
             //Act
-            var y = SetupAssemblyInitializer.authors.Where(x => x.id == ID).First();
+            var y = SetupAssemblyInitializer.authors.Where(x => x.Id == ID).First();
             //Assert
             Assert.AreEqual(SetupAssemblyInitializer.a2, y, "The Authors are Equal");
         }
@@ -36,17 +36,17 @@ namespace Library.Test
         [TestMethod]
         public void DeleteAllAuthors()
         {
-            int startCount = Author.authors.Count();
+            int startCount = Author.Authors.Count();
             Author.DeleteAllAuthors();
-            int endCount = Author.authors.Count();
-            Assert.AreEqual(0, Author.authors.Count, startCount + " authors has been deleted from your library!");
+            int endCount = Author.Authors.Count();
+            Assert.AreEqual(0, Author.Authors.Count, startCount + " authors has been deleted from your library!");
         }
 
         [TestMethod]
         public void DeleteAuthorWithAuthor()
         {
             Author.DeleteAuthorWithAuthor(SetupAssemblyInitializer.a2);
-            int i = Author.authors.IndexOf(SetupAssemblyInitializer.a2);
+            int i = Author.Authors.IndexOf(SetupAssemblyInitializer.a2);
             Assert.AreEqual(-1, i, "The Author has been deleted");
         }
 
@@ -54,12 +54,12 @@ namespace Library.Test
         public void GetAllBooksFromSpecificAuthor()
         {
             int authorTestId = 2;
-            List<Books> books = Author.GetAllBooksFromSpecificAuthor(authorTestId);
+            List<Book> books = Author.GetAllBooksFromSpecificAuthor(authorTestId);
 
             bool allHasSameId = true;
-            foreach (Books book in books)
+            foreach (Book book in books)
             {
-                if (book.authorId != authorTestId)
+                if (book.AuthorId != authorTestId)
                 {
                     allHasSameId = false;
                 }

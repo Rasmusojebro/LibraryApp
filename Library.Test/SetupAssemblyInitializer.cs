@@ -15,15 +15,15 @@ namespace Library.Test
         public static Author a2 = new Author("Alex", "Matroosov");
         public static Author a3 = new Author("Joseph", "Albahari");
         public static Author a4 = new Author("Robert C", "Martin");
-        public static List<Author> authors = Author.authors;
+        public static List<Author> authors = Author.Authors;
 
-        public static Books b = new MediumBook(a, "Natural Language Processing in Action", 300);
-        public static Books b1 = new MediumBook(a1, "Grokking Deep Learning", 359);
-        public static Books b2 = new MediumBook(a2, "Rootkits And Bootkits", 504);
-        public static Books b3 = new LargeBook(a3, "C# 7.0 in a Nutshell", 1056);
-        public static Books b4 = new SmallBook(a3, "LINQ Pocket Reference", 172);
-        public static Books b5 = new MediumBook(a4, "Clean Code: A Handbook of Agile Software Craftmanship", 464);
-        public static List<Books> books = new List<Books>();
+        public static Book b = new MediumBook(a, "Natural Language Processing in Action", 300);
+        public static Book b1 = new MediumBook(a1, "Grokking Deep Learning", 359);
+        public static Book b2 = new MediumBook(a2, "Rootkits And Bootkits", 504);
+        public static Book b3 = new LargeBook(a3, "C# 7.0 in a Nutshell", 1056);
+        public static Book b4 = new SmallBook(a3, "LINQ Pocket Reference", 172);
+        public static Book b5 = new MediumBook(a4, "Clean Code: A Handbook of Agile Software Craftmanship", 464);
+        public static List<Book> books = new List<Book>();
 
 
 
@@ -42,7 +42,7 @@ namespace Library.Test
             books.Add(b3);
             books.Add(b4);
             books.Add(b5);
-            Books.books = books;
+            Book.Books = books;
 
 
         }

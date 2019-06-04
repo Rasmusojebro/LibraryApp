@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace Library
 {
-    public class LargeBook : Books
+    public class LargeBook : Book
     {
         public LargeBook(Author auth, string t, int p)
         {
-            id = nextId;
-            type = "large";
-            authorId = auth.id;
-            title = t;
+            Id = NextId;
+            Type = "large";
+            AuthorId = auth.Id;
+            Title = t;
             base.p = p;
-            books.Add(this);
-            nextId++;
+            Books.Add(this);
+            NextId++;
         }
     }
 }
